@@ -213,7 +213,7 @@ public class Magpie4
         {
             response = "The Golden State Warriors play in the NBA’s Pacific Division.";
         }
-
+        // Finished all user input queestions and response pairs
         else
         {
             // Look for a two word (you <something> me)
@@ -253,6 +253,7 @@ public class Magpie4
         int psn = findKeyword (statement, "I want to", 0);
         String restOfStatement = statement.substring(psn + 9).trim();
         return "Would you like to " + restOfStatement + "?";
+                //Finsished transformIWantToStatement code
     }
 
     /**
@@ -347,7 +348,7 @@ public class Magpie4
         double r = Math.random();
         int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
         String response = "";
-
+        //Finished random responses
         if (whichResponse == 0)
         {
             response = "Interesting, tell me more.";
