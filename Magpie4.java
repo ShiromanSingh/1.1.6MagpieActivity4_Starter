@@ -1,14 +1,14 @@
 /**
  * A program to carry on conversations with a human user.
- * This version:
+ * This version: Final
  *<ul><li>
  * 		Uses advanced search for keywords 
  *</li><li>
  * 		Will transform statements as well as react to keywords
  *</li></ul>
- * @author Laurie White
- * @version April 2012
- *
+ * @authors Shiroman Singh, Abigale Kim
+ * @version December 2016
+ * Domain: Sports chatbot which is expert on Golden State Warriors NBA team.
  */
 public class Magpie4
 {
@@ -24,7 +24,7 @@ public class Magpie4
     public String getEnding()
     {
         return "Good Bye, have a nice day!";
-    }
+    } //Unique method
 
     /**
      * Gives a response to a user statement
@@ -35,8 +35,8 @@ public class Magpie4
      */
     public String getResponse(String statement)
     {
-        String response = "";
-        if (statement.length() == 0)
+        String response = ""; 
+        if (statement.length() == 0) //Null imput/random/probing response start
         {
             response = "Say something, please.";
         }
@@ -52,7 +52,8 @@ public class Magpie4
         else if (findKeyword(statement, "What is your name?") >= 0)
         {
             response = "My name is SportsAssist";
-        }
+            //End Null input/random/probing response
+        } //Begin context based responses
         else if (findKeyword(statement, "Where Warriors play") >= 0
         || findKeyword(statement, "Where") >= 0
         || findKeyword(statement, "Warriors play") >=0)
@@ -166,6 +167,7 @@ public class Magpie4
         {
             response = "Draymond Green is 6'7''.";
         }
+        
 
         // Responses which require transformations
         else if (findKeyword(statement, "I want to", 0) >= 0)
@@ -213,11 +215,10 @@ public class Magpie4
         {
             response = "The Golden State Warriors play in the NBA’s Pacific Division.";
         }
-        // Finished all user input queestions and response pairs
+        //End context based responses 
         else
         {
-            // Look for a two word (you <something> me)
-            // pattern
+     
             int psn = findKeyword(statement, "you", 0);
 
             if (psn >= 0
@@ -241,7 +242,7 @@ public class Magpie4
      */
     private String transformIWantToStatement(String statement)
     {
-        //  Remove the final period, if there is one
+        // Start transposition responses
         statement = statement.trim();
         String lastChar = statement.substring(statement
                 .length() - 1);
@@ -253,7 +254,7 @@ public class Magpie4
         int psn = findKeyword (statement, "I want to", 0);
         String restOfStatement = statement.substring(psn + 9).trim();
         return "Would you like to " + restOfStatement + "?";
-                //Finsished transformIWantToStatement code
+               
     }
 
     /**
@@ -264,7 +265,7 @@ public class Magpie4
      */
     private String transformYouMeStatement(String statement)
     {
-        //  Remove the final period, if there is one
+     
         statement = statement.trim();
         String lastChar = statement.substring(statement
                 .length() - 1);
@@ -279,6 +280,7 @@ public class Magpie4
 
         String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe).trim();
         return "What makes you think that I " + restOfStatement + " you?";
+        //End transposition responses
     }
 
     /**
@@ -348,7 +350,7 @@ public class Magpie4
         double r = Math.random();
         int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
         String response = "";
-        //Finished random responses
+        //Begin random responses
         if (whichResponse == 0)
         {
             response = "Interesting, tell me more.";
@@ -393,6 +395,7 @@ public class Magpie4
         {
             response = "That's awesome";
         }
+        //Finish random responses
 
         return response;
 
